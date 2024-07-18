@@ -1,10 +1,11 @@
-from flask import Flask
+from fastapi import FastAPI
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/')
-def welcome():
-    return "Welcome to the service"
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the FastAPI application"}
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.get("/second")
+def second():
+    return {"This is second route"}
